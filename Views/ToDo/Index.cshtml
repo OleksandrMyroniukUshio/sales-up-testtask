@@ -1,0 +1,41 @@
+﻿@model IEnumerable<sales_up.Models.TaskItem>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/js/taskManager.js"></script>
+    <script src="~/js/eventHandlers.js"></script>
+}
+
+<div class="container m-5 p-2 rounded mx-auto shadow">
+    <div class="row m-1 p-3">
+        <div class="col col-11 mx-auto">
+            <div class="input-group">
+                <input type="text" id="newTaskName" class="form-control form-control-lg" placeholder="Add new task" maxlength="120">
+                <div class="input-group-append">
+                    <button id="addTaskBtn" class="btn btn-primary" type="button">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mx-1 px-5 pb-3">
+        <div class="col mx-auto">
+            <div class="btn-group sort-btn">
+                <button class="btn btn-primary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" data-sort="name">Name</a>
+                    <a class="dropdown-item" href="#" data-sort="status">Completion Status</a>
+                </div>
+                <button id="toggleSortOrderBtn" class="btn btn-primary" data-sort-order="asc"><i class="fa fa-sort-amount-asc"></i></button>
+            </div>
+            <div id="tasksList"
+                 data-add-task-url="@Url.Action("AddTask", "ToDo")"
+                 data-delete-task-url="@Url.Action("DeleteTask", "ToDo")"
+                 data-toggle-completion-url="@Url.Action("ToggleCompletion", "ToDo")"
+                 data-update-task-name-url="@Url.Action("UpdateTaskName", "ToDo")"
+                 data-get-tasks-url="@Url.Action("GetTasks", "ToDo")">
+                <!-- task divs -->
+            </div>
+        </div>
+    </div>
+</div>

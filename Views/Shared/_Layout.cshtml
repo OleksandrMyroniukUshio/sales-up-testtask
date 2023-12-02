@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - sales_up</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap">
+
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="theme-toggle-label"></label>
+    </div>
+
+    <div class="header-text">
+        <a href="https://salesup-it.com/" class="brand-link">Sales'Up</a> To-Do table
+    </div>
+
+    @RenderBody()
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const toggleSwitch = document.querySelector('#theme-toggle');
+        toggleSwitch.addEventListener('change', (e) => {
+            document.body.setAttribute('data-theme', e.target.checked ? 'dark' : 'light');
+            localStorage.setItem('theme', e.target.checked ? 'dark' : 'light');
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', currentTheme);
+            toggleSwitch.checked = currentTheme === 'dark';
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
