@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8000:5191
+      - 8000:80
     depends_on:
       - postgres_db
 

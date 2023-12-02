@@ -13,7 +13,7 @@ builder.Services.AddDbContext<TasksDbContext>(options => {
 builder.Services.AddScoped<ITaskService,  TaskService>();
 
 
-builder.WebHost.UseUrls("http://*:5191");
+builder.WebHost.UseUrls("http://*:80"); 
 
 var app = builder.Build();
 
